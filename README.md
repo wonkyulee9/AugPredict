@@ -7,12 +7,12 @@ The code reproduces object detection training on different models pre-trained wi
 
 Parts of the code for contrastive learning is adapted from https://github.com/HobbitLong/SupContrast and parts of the code for object detection using Faster-RCNN is adapted from https://github.com/pytorch/vision/tree/master/references/detection.
 
-#Pre-Training
+# Pre-Training
 main_supcon.py is used to pre-train a model with SimCLR/SupCon
 main_ce.py is used for supervised cross entropy training
 main_augpred.py is used for SimCLR + Augmentation Parameter Prediction
 
-#Downstream
+# Downstream
 main_ce.py is used to evaluate classification performance
 main_detection.py is used to train and evaluate object detection performance
 
