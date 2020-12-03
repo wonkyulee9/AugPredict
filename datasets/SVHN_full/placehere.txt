@@ -1,0 +1,1 @@
+Place the tar files here and extract, then run svhn_detection_data.py to prepare pkl files for dataloader.
