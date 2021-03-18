@@ -6,13 +6,13 @@ Adapted from: https://github.com/pytorch/vision/tree/master/references/detection
 import torch
 import torchvision
 import os
-import test2
 import datetime
 import argparse
 import time
 import math
 import sys
 import detection_util
+import detection_metrics
 from torch.utils import data
 from torchvision import transforms
 from svhn_detect_data import SVHNFull
@@ -87,7 +87,7 @@ def evaluate(model, loader, device):
         model_time = time.time() - model_time
 
         evaluator_time = time.time()
-        tp, fp, fn = test2.getnum_tp_fp_fn(targets, outputs)
+        tp, fp, fn = detection_metrics.getnum_tp_fp_fn(targets, outputs)
         tp_total += tp
         fp_total += fp
         fn_total += fn
@@ -97,7 +97,7 @@ def evaluate(model, loader, device):
 
     metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger)
-    print("AP:", test2.get_mAP(tp_total, fp_total, fn_total))
+    print("AP:", detection_metrics.get_mAP(tp_total, fp_total, fn_total))
     torch.set_num_threads(n_threads)
     return
 
